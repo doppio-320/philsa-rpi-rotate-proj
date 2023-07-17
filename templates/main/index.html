@@ -20,7 +20,9 @@
                         document.getElementById('sd_temp').setAttribute("class", "style_val");
                     });
                 }
-            })
+
+                setInterval(requestTempProbeReading, 1000);
+            });
         </script>
 
         <div id="indic_segment_outer" class="indiv_segment_outer">
