@@ -19,8 +19,7 @@
                         sd_temp = response.data_temp.toFixed(2);
                         document.getElementById('sd_temp').innerHTML = sd_temp;
                         document.getElementById('sd_temp').setAttribute("class", "style_val");
-                        document.getElementById('tape_temp').value = (1000/80.0) * (sd_temp + 20.0);                        
-                        alert((1000/80) * (sd_temp + 20));
+                        document.getElementById('tape_temp').value = (1000/80.0) * (sd_temp + 20.0);
                     });
                 }
 
