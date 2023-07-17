@@ -10,6 +10,19 @@
     <body>
         <script src="{{ url_for('static',filename='js/index.js') }}"></script>
 
+        <script>
+            document.addEventListener("DOMContentLoaded", function(event) {
+                const requestTempProbeReading = function() {
+                    fetch(`http://${location.host}/sd_update`)
+                    .then((resp) => resp.json())
+                    .then(function(response) {
+                        document.getElementById('sd_temp').innerHTML = response.data.toFixed(2);
+                        document.getElementById('sd_temp').setAttribute("class", "style_val");
+                    });
+                }
+            })
+        </script>
+
         <div id="indic_segment_outer" class="indiv_segment_outer">
             <p style="margin: 10px;">INDICATING</p>
             <div id="indic_segment_inner" class="indiv_segment_inner">
@@ -40,7 +53,7 @@
                 <br>
                 <p>CURRENT <span class="style_unit">AMP</span>: <span class="style_invalid">XX</span></p>
                 <br>
-                <p>TEMPERATURE <span class="style_unit">°C</span>: <span class="style_invalid">XX</span></p>
+                <p>TEMPERATURE <span class="style_unit">°C</span>: <span class="style_invalid" id="sd_temp">XX</span></p>
                 <div class="sliderContainer">
                     <input type="range" min="0" max="1000" value="550" class="display_slider">                    
                     <br>
