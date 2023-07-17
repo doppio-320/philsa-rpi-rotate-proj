@@ -17,7 +17,7 @@ def update_light():
 
 @app.route('/sd_update/')
 def sd_update():
-	r_temp = 24 + random.uniform(0, 1)
+	r_temp = 59 + random.uniform(0, 1)
 	templateData = {'data_temp': r_temp}
 	return jsonify(templateData), 200
 
