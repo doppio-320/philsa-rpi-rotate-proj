@@ -16,7 +16,7 @@
                     fetch(`http://${location.host}/sd_update`)
                     .then((resp) => resp.json())
                     .then(function(response) {
-                        document.getElementById('sd_temp').innerHTML = response.data.toFixed(2);
+                        document.getElementById('sd_temp').innerHTML = response.data_temp.toFixed(2);
                         document.getElementById('sd_temp').setAttribute("class", "style_val");
                     });
                 }
