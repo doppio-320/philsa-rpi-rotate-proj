@@ -16,8 +16,10 @@
                     fetch(`http://${location.host}/sd_update`)
                     .then((resp) => resp.json())
                     .then(function(response) {
-                        document.getElementById('sd_temp').innerHTML = response.data_temp.toFixed(2);
+                        sd_temp = response.data_temp.toFixed(2);
+                        document.getElementById('sd_temp').innerHTML = sd_temp;
                         document.getElementById('sd_temp').setAttribute("class", "style_val");
+                        document.getElementById('tape_temp').value = 12.5 * (sd_temp + 20);
                     });
                 }
 
@@ -57,7 +59,7 @@
                 <br>
                 <p>TEMPERATURE <span class="style_unit">°C</span>: <span class="style_invalid" id="sd_temp">XX</span></p>
                 <div class="sliderContainer">
-                    <input type="range" min="0" max="1000" value="550" class="display_slider">                    
+                    <input id="tape_temp" type="range" min="0" max="1000" value="550" class="display_slider">                    
                     <br>
                     <p>-20°C</p>                    
                     <p style="float: right; margin: 0;">+60°C</p>
