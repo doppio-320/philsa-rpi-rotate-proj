@@ -1,0 +1,107 @@
+#control_segment_outer {
+    /*background-color: gray;*/
+}
+
+.indiv_segment_outer {
+    padding: 10px;
+}
+
+.indiv_segment_inner {
+    border: 2px solid white;    
+
+    padding: 15px;
+}
+
+.indiv_segment_outer p {
+    display: inline;
+}
+
+.sliderContainer {
+    border-left: 2px solid white;
+    border-right: 2px solid white;
+}
+
+.sliderMarker {
+    position: absolute;
+    right: 50%;    
+    transform: translate(50%, -15px);
+
+    border: 1px solid white;
+    height: 15px;
+}
+
+input[type="range"] {
+    -webkit-appearance: none;
+    width: 100%;
+    height: 3px;
+    margin: 0;
+
+    border-radius: 0;
+
+    color: white;    
+}
+
+.display_slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none; 
+    height: 15px;
+    width: 15px;
+    background: transparent;
+    background-image: url(../icons/valuedisp.png);
+    background-size: cover;  
+
+    transform: translateY(-50%);
+}
+
+.control_slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none; 
+    height: 15px;
+    width: 15px;
+    background: transparent;
+    background-image: url(../icons/circle.png);
+    background-size: cover;    
+}
+
+input[type="checkbox"] {
+    -webkit-appearance: none;
+    background-color: black;
+    border: 2px solid white;
+
+    width: 15px;
+    height: 15px;
+
+    margin: 0;
+}
+
+input[type="checkbox"]:checked {
+    background-color: white;    
+}
+
+.style_lbl {
+    color: white;   
+}
+.style_unit {
+    color: cyan;
+}
+.style_val {
+    color: greenyellow;
+}
+.style_invalid {
+    color: orange;
+}
+
+body {
+    background-color: black;
+    color: white;
+    font-family: airbus;
+}
+
+@font-face {
+    font-family: b612-mono;
+    src: url(../fonts/b612.ttf);
+}
+@font-face {
+    font-family: airbus;
+    src: url(../fonts/airbus.ttf);
+}

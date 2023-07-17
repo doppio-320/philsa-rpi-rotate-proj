@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie-edge">
+        <title>Motor Control Interface</title>
+        <link rel="stylesheet" href="{{ url_for('static',filename='styles/index.css') }}">
+    </head>
+    <body>
+        <script src="{{ url_for('static',filename='js/index.js') }}"></script>
+
+        <div id="indic_segment_outer" class="indiv_segment_outer">
+            <p style="margin: 10px;">INDICATING</p>
+            <div id="indic_segment_inner" class="indiv_segment_inner">
+                <p>TORQUE <span class="style_unit">%</span>: <span class="style_invalid">XX</span>,</p>
+                <p><span class="style_unit">OZ-IN</span>: <span class="style_invalid">XX</span></p>
+                <br>
+                <div class="sliderContainer">
+                    <p>0</p>                    
+                    <p style="float: right; margin: 0;">704 OZ-IN</p>
+                    <input type="range" min="0" max="1000" value="0" class="display_slider">                    
+                    <br>
+                    <p>0%</p>                    
+                    <p style="float: right; margin: 0;">100%</p>
+                </div>
+                <br>
+                <p>ROTOR <span class="style_unit">RPM</span>: <span class="style_invalid">XX</span></p>
+                <br>
+                <div class="sliderContainer">
+                    <input type="range" min="0" max="1000" value="500" class="display_slider">                    
+                    <div class="sliderMarker" style="pointer-events: none;"></div>
+                    <br>
+                    <p>1000RPM</p>
+                    <p style="position: absolute; right: 50%; transform: translateX(50%); margin: 0;">0</p>
+                    <p style="float: right; margin: 0;">1000RPM</p>
+                </div>
+                <br>
+                <p>VOLTAGE <span class="style_unit">VDC</span>: <span class="style_invalid">XX</span></p>
+                <br>
+                <p>CURRENT <span class="style_unit">AMP</span>: <span class="style_invalid">XX</span></p>
+                <br>
+                <p>TEMPERATURE <span class="style_unit">°C</span>: <span class="style_invalid">XX</span></p>
+                <div class="sliderContainer">
+                    <input type="range" min="0" max="1000" value="550" class="display_slider">                    
+                    <br>
+                    <p>-20°C</p>                    
+                    <p style="float: right; margin: 0;">+60°C</p>
+                </div>
+            </div>
+        </div>
+
+        <div id="indic_segment_outer" class="indiv_segment_outer">
+            <p style="margin: 10px;">CONTROL</p>
+            <div id="indic_segment_inner" class="indiv_segment_inner">
+                <p>MOTION <span class="style_unit">%</span>: <span class="style_invalid">XX</span></p>
+                <br>
+                <div class="sliderContainer">
+                    <input type="range" min="0" max="1000" value="500" class="control_slider">                    
+                    <div class="sliderMarker" style="pointer-events: none;"></div>
+                    <br>
+                    <p>CCW</p>
+                    <p style="position: absolute; right: 50%; transform: translateX(50%); margin: 0;">0</p>
+                    <p style="float: right; margin: 0;">CW</p>
+                </div>               
+            </div>
+        </div>
+
+        <div id="misc_segment_outer" class="indiv_segment_outer">
+            <p style="margin: 10px;">MISC</p>
+            <div id="misc_segment_inner" class="indiv_segment_inner">
+                <p>LIGHT</p>
+                <input type="checkbox" class="control_checkbox" onclick="lightChkBox(this);">                             
+            </div>
+        </div>
+    </body>
+</html>
