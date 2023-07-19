@@ -6,32 +6,14 @@
         <meta http-equiv="X-UA-Compatible" content="ie-edge">
         <title>Motor Control Interface</title>
         <link rel="stylesheet" href="{{ url_for('static',filename='styles/index.css') }}">
+        <link rel="stylesheet" href="../../static/styles/index.css">
     </head>
-    <body>
-        <script src="{{ url_for('static',filename='js/index.js') }}"></script>
-
-        <script>
-            document.addEventListener("DOMContentLoaded", function(event) {
-                const requestTempProbeReading = function() {
-                    fetch(`http://${location.host}/sd_update`)
-                    .then((resp) => resp.json())
-                    .then(function(response) {
-                        sd_temp = response.data_temp.toFixed(2);
-                        document.getElementById('sd_temp').innerHTML = sd_temp;
-                        document.getElementById('sd_temp').setAttribute("class", "style_val");
-                        document.getElementById('tape_temp').value = (1000/80.0) * (sd_temp + 20.0);
-                    });
-                }
-
-                setInterval(requestTempProbeReading, 1000);
-            });
-        </script>
-
+    <body>        
         <div id="indic_segment_outer" class="indiv_segment_outer">
             <p style="margin: 10px;">INDICATING</p>
             <div id="indic_segment_inner" class="indiv_segment_inner">
-                <p>TORQUE <span class="style_unit">%</span>: <span class="style_invalid">XX</span>,</p>
-                <p><span class="style_unit">OZ-IN</span>: <span class="style_invalid">XX</span></p>
+                <p>TORQUE <span class="style_unit">%</span>: <span class="style_invalid" id="sd_n1">XX</span>,</p>
+                <p><span class="style_unit">OZ-IN</span>: <span class="style_invalid "id="sd_tq">XX</span></p>
                 <br>
                 <div class="sliderContainer">
                     <p>0</p>                    
@@ -41,8 +23,8 @@
                     <p>0%</p>                    
                     <p style="float: right; margin: 0;">100%</p>
                 </div>
-                <br>
-                <p>ROTOR <span class="style_unit">RPM</span>: <span class="style_invalid">XX</span></p>
+                <br><br>
+                <p>ROTOR <span class="style_unit">RPM</span>: <span class="style_invalid" id="sd_rpm">XX</span></p>
                 <br>
                 <div class="sliderContainer">
                     <input type="range" min="0" max="1000" value="500" class="display_slider">                    
@@ -52,11 +34,11 @@
                     <p style="position: absolute; right: 50%; transform: translateX(50%); margin: 0;">0</p>
                     <p style="float: right; margin: 0;">1000RPM</p>
                 </div>
-                <br>
-                <p>VOLTAGE <span class="style_unit">VDC</span>: <span class="style_invalid">XX</span></p>
-                <br>
-                <p>CURRENT <span class="style_unit">AMP</span>: <span class="style_invalid">XX</span></p>
-                <br>
+                <br><br>
+                <p>VOLTAGE <span class="style_unit">VDC</span>: <span class="style_invalid" id="sd_vdc">XX</span></p>
+                <br><br>
+                <p>CURRENT <span class="style_unit">AMP</span>: <span class="style_invalid" id="sd_amp">XX</span></p>
+                <br><br>
                 <p>TEMPERATURE <span class="style_unit">°C</span>: <span class="style_invalid" id="sd_temp">XX</span></p>
                 <div class="sliderContainer">
                     <input id="tape_temp" type="range" min="0" max="1000" value="550" class="display_slider">                    
@@ -79,16 +61,30 @@
                     <p>CCW</p>
                     <p style="position: absolute; right: 50%; transform: translateX(50%); margin: 0;">0</p>
                     <p style="float: right; margin: 0;">CW</p>
-                </div>               
+                </div>
+                <br><br>
+                <p>MAIN PWR</p>
+                <input type="checkbox" class="control_checkbox" onclick="lightChkBox(this);">                             
+            </div>
+        </div>
+
+        <div id="mwd_segment_outer" class="indiv_segment_outer">
+            <p style="margin: 10px;">MWD</p>
+            <div id="mwd_segment_inner" class="indiv_segment_inner">
+                <p class="style_invalid">INIT MWD</p>             
             </div>
         </div>
 
         <div id="misc_segment_outer" class="indiv_segment_outer">
             <p style="margin: 10px;">MISC</p>
-            <div id="misc_segment_inner" class="indiv_segment_inner">
-                <p>LIGHT</p>
-                <input type="checkbox" class="control_checkbox" onclick="lightChkBox(this);">                             
+            <div id="misc_segment_inner" class="indiv_segment_inner">                
             </div>
-        </div>
+        </div>    
+
+        <script src="{{ url_for('static',filename='js/index.js') }}"></script>
+        <script src="{{ url_for('static',filename='js/sdu_live.js') }}"></script>
+        <script src="../../static/js/index.js"></script>        
+        <script src="../../static/js/sdu_live.js"></script>
+        <script src="../../static/js/mwd.js"></script>
     </body>
 </html>

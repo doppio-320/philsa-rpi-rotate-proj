@@ -1,5 +1,8 @@
+import os
+
 from flask import Flask, render_template, url_for, request, jsonify
-import RPi.GPIO as gpio
+if os.name != 'nt':
+	import RPi.GPIO as gpio
 import random 
 
 app = Flask(__name__)
@@ -17,13 +20,16 @@ def update_light():
 
 @app.route('/sd_update/')
 def sd_update():
-	r_temp = 59 + random.uniform(0, 1)
-	templateData = {'data_temp': r_temp}
+	r_temp = 24 + random.uniform(0, 1)	
+	templateData = {
+		'data_temp': r_temp
+		}
 	return jsonify(templateData), 200
 
 
 if __name__ == "__main__":
 	app.run(debug=True, host='0.0.0.0')
-	gpio.setmode(gpio.BCM)
-	gpio.setwarnings(False)
-	gpio.setup(18, gpio.OUT)
+	if os.name != 'nt':
+		gpio.setmode(gpio.BCM)
+		gpio.setwarnings(False)
+		gpio.setup(18, gpio.OUT)
