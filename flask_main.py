@@ -65,7 +65,10 @@ def sd_update_temp():
 def sd_update_rpm():
 	global rpm
 	global selectedCW
-	sd_rpm = rpm	
+	sd_rpm = None
+	if rpm != 0:
+		sd_rpm = rpm
+
 	templateData = {
 		'data_rpm': sd_rpm,
 		'dir_is_cw': selectedCW
