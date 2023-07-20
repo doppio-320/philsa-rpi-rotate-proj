@@ -13,28 +13,28 @@ motorThread = None
 selectedRPM = 0
 selectedCW = False
 
+
 def motorLoop():
 	while True:
-		global stepInterval
-		global rpm		
-		#print("RPM: " + str(rpm))
-		start = time.time()
-		if rpm > 0:
-			print("pin 17 hi")
-			#gpio.output(17, gpio.HIGH)
-		time.sleep(stepInterval / 2)		
-		print("pin 17 lo")
-		#gpio.output(17, gpio.LOW)
-		time.sleep(stepInterval / 2)
-		end = time.time()
+		if os.name != 'nt':
+			global stepInterval
+			global rpm		
+			#print("RPM: " + str(rpm))
+			start = time.time()
+			if rpm > 0:
+				print("pin 17 hi")
+				gpio.output(17, gpio.HIGH)
+			time.sleep(stepInterval / 2)		
+			print("pin 17 lo")
+			gpio.output(17, gpio.LOW)
+			time.sleep(stepInterval / 2)
+			end = time.time()
 
-		global selectedCW
-		if selectedCW:
-			#gpio.output(27, gpio.HIGH)
-			pass
-		else:
-			#gpio.output(27, gpio.LOW)
-			pass
+			global selectedCW
+			if selectedCW:
+				gpio.output(27, gpio.HIGH)
+			else:
+				gpio.output(27, gpio.LOW)
 
 def getIntervalFromRPM(rpm):
 	if rpm == 0:
@@ -74,7 +74,6 @@ def ctrl_update_rpm():
 	
 	global stepInterval
 	stepInterval = getIntervalFromRPM(rpm)
-	#print(stepInterval)
 
 	global selectedCW
 	if rpm > 500:

@@ -12,18 +12,11 @@ function sendRPMUpdate(rpm) {
     var url = `http://${location.host}/ctrl_update/rpm`
     xhr.open("POST", url, true);
     xhr.setRequestHeader("Content-Type", "application/json");
-    // xhr.onreadystatechange = function () {
-    //     if (xhr.readyState === 4 && xhr.status === 200) {
-
-    //     }
-    // }
 
     var data = JSON.stringify(
         {"ctrl_rpm": rpm}
     );
     xhr.send(data)
-
-    console.log("test")
 }
 
 function findRPMfromSlider(slider) {
