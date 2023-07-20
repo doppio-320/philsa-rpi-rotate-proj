@@ -15,6 +15,12 @@ selectedCW = False
 
 
 def motorLoop():
+	if os.name != 'nt':
+		gpio.setmode(gpio.BCM)
+		gpio.setwarnings(False)
+		gpio.setup(17, gpio.OUT)
+		gpio.setup(27, gpio.OUT)
+
 	while True:
 		if os.name != 'nt':
 			global stepInterval
@@ -94,9 +100,3 @@ if __name__ == "__main__":
 	motorThread.start()
 
 	app.run(debug=True, host='0.0.0.0')
-
-	if os.name != 'nt':
-		gpio.setmode(gpio.BCM)
-		gpio.setwarnings(False)
-		gpio.setup(17, gpio.OUT)
-		gpio.setup(27, gpio.OUT)
