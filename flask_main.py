@@ -82,10 +82,8 @@ def ctrl_update_rpm():
 	stepInterval = getIntervalFromRPM(rpm)
 
 	global selectedCW
-	if rpm > 500:
-		selectedCW = True
-	else:
-		selectedCW = False
+	selectedCW = bool(data['ctrl_dir_cw'])
+	print(selectedCW)	
 	
 	return render_template('main/index.html')
 
