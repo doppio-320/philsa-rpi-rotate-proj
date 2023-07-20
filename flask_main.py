@@ -38,9 +38,9 @@ def motorLoop():
 
 			global selectedCW
 			if selectedCW:
-				gpio.output(27, gpio.HIGH)
-			else:
 				gpio.output(27, gpio.LOW)
+			else:
+				gpio.output(27, gpio.HIGH)
 
 def getIntervalFromRPM(rpm):
 	if rpm == 0:
