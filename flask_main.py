@@ -98,4 +98,5 @@ if __name__ == "__main__":
 	if os.name != 'nt':
 		gpio.setmode(gpio.BCM)
 		gpio.setwarnings(False)
-		gpio.setup(18, gpio.OUT)
+		gpio.setup(17, gpio.OUT)
+		gpio.setup(27, gpio.OUT)
