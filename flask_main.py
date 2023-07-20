@@ -64,9 +64,11 @@ def sd_update_temp():
 @app.route('/sd_update/rpm')
 def sd_update_rpm():
 	global rpm
+	global selectedCW
 	sd_rpm = rpm	
 	templateData = {
-		'data_rpm': sd_rpm
+		'data_rpm': sd_rpm,
+		'dir_is_cw': selectedCW
 	}
 	
 	return jsonify(templateData), 200
@@ -82,8 +84,7 @@ def ctrl_update_rpm():
 	stepInterval = getIntervalFromRPM(rpm)
 
 	global selectedCW
-	selectedCW = bool(data['ctrl_dir_cw'])
-	print(selectedCW)	
+	selectedCW = bool(data['ctrl_dir_cw'])	
 	
 	return render_template('main/index.html')
 
