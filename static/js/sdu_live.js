@@ -9,4 +9,6 @@ document.addEventListener("DOMContentLoaded", function(event) {
             document.getElementById('tape_temp').value = (1000.0/80.0) * (response.data_temp + 20.0);            
         });
     }
+
+    setInterval(requestTempProbeReading, 1000);
 });
